@@ -42,6 +42,9 @@ export interface MenuItem {
   isAvailable: boolean;
   preparationTime?: number;
   chefsNote?: string;
+  chefsNoteEn?: string;
+  chefsNoteDe?: string;
+  chefsNoteRu?: string;
   extras?: Extra[];
   pairingSuggestions?: string[]; // IDs of suggested items
 }

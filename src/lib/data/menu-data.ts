@@ -38,6 +38,9 @@ export const MENU_ITEMS: MenuItem[] = [
     isAvailable: true,
     preparationTime: 10,
     chefsNote: 'İtalya\'dan haftalık gelen taze burrata kullanıyoruz.',
+    chefsNoteEn: 'We use fresh burrata delivered weekly from Italy.',
+    chefsNoteDe: 'Wir verwenden frischen Burrata, der wöchentlich aus Italien geliefert wird.',
+    chefsNoteRu: 'Мы используем свежую буррату, которая еженедельно доставляется из Италии.',
     pairingSuggestions: ['win-005', 'win-002'],
   },
   {

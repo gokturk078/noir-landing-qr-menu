@@ -8,28 +8,34 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function getLocalizedItem(item: MenuItem, language: string) {
-  const baseLanguage = language.split('-')[0];
+  const baseLanguage = (language || 'tr').split('-')[0];
+
+  // Start with default (Turkish)
   let name = item.name;
   let description = item.description;
 
+  // Helper for safe translation lookup
+  const getI18nDesc = (lang: 'en' | 'de' | 'ru') =>
+    MENU_ITEM_DESCRIPTION_I18N[lang]?.[item.id];
+
   if (baseLanguage === 'en') {
     name = item.nameEn || item.name;
-    description = item.descriptionEn || MENU_ITEM_DESCRIPTION_I18N.en[item.id] || item.description;
+    description = item.descriptionEn || getI18nDesc('en') || item.description;
   } else if (baseLanguage === 'de') {
     name = item.nameDe || item.nameEn || item.name;
     description =
       item.descriptionDe ||
       item.descriptionEn ||
-      MENU_ITEM_DESCRIPTION_I18N.de[item.id] ||
-      MENU_ITEM_DESCRIPTION_I18N.en[item.id] ||
+      getI18nDesc('de') ||
+      getI18nDesc('en') ||
       item.description;
   } else if (baseLanguage === 'ru') {
     name = item.nameRu || item.nameEn || item.name;
     description =
       item.descriptionRu ||
       item.descriptionEn ||
-      MENU_ITEM_DESCRIPTION_I18N.ru[item.id] ||
-      MENU_ITEM_DESCRIPTION_I18N.en[item.id] ||
+      getI18nDesc('ru') ||
+      getI18nDesc('en') ||
       item.description;
   }
 
